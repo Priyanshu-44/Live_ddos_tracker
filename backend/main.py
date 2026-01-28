@@ -1,5 +1,8 @@
+from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from backend.fetch import fetch_events  
 
@@ -14,6 +17,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount the frontend static files
+frontend_dir = Path(__file__).parent.parent / "frontend"
+app.mount("/static", StaticFiles(directory=str(frontend_dir)), name="static")
 
 async def update_events():
     """Fetch new events and update the cache"""
@@ -30,6 +37,11 @@ async def on_startup():
     scheduler = AsyncIOScheduler()
     scheduler.add_job(update_events, 'interval', minutes=1)
     scheduler.start()
+
+@app.get("/")
+async def read_root():
+    """Serve the frontend HTML"""
+    return FileResponse(str(frontend_dir / "index.html"))
 
 @app.get("/events")
 async def get_events():
