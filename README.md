@@ -151,6 +151,116 @@ Edit [frontend/script.js](frontend/script.js) to adjust animation duration and r
 - Use `.env` file with `python-dotenv` for local development
 - For production, use secure secret management services
 
-## 📄 License
+## � Development Workflow
+
+### GitHub Workflow for Contributors
+
+1. **Fork & Clone**
+   ```bash
+   git clone https://github.com/Priyanshu-44/Live_ddos_tracker.git
+   cd Live_ddos_tracker
+   ```
+
+2. **Create Feature Branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+3. **Make Changes & Test**
+   ```bash
+   # Install dependencies
+   pip install -r requirements.txt
+   
+   # Run the project
+   python -m uvicorn backend.main:app --reload
+   ```
+
+4. **Commit Changes**
+   ```bash
+   git add .
+   git commit -m "feat: describe your changes"
+   ```
+
+5. **Push to GitHub**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+6. **Create Pull Request**
+   - Go to GitHub repository
+   - Click "New Pull Request"
+   - Select your branch and submit
+
+### Commit Message Convention
+
+- `feat:` - New feature
+- `fix:` - Bug fix
+- `docs:` - Documentation changes
+- `style:` - Code style changes
+- `refactor:` - Code refactoring
+- `test:` - Test additions
+
+Example: `git commit -m "feat: add dark mode to frontend"`
+
+### Local Development Checklist
+
+- [ ] Virtual environment created and activated
+- [ ] Dependencies installed: `pip install -r requirements.txt`
+- [ ] Backend runs without errors
+- [ ] Frontend loads at `http://localhost:8000`
+- [ ] Map displays with animated attacks
+- [ ] No console errors in browser dev tools
+
+## 🚢 Deployment
+
+### Deploy to Heroku
+
+1. Install Heroku CLI
+2. Login: `heroku login`
+3. Create app: `heroku create your-app-name`
+4. Push: `git push heroku main`
+5. View: `heroku open`
+
+### Deploy to Render
+
+1. Push to GitHub
+2. Connect repository on Render.com
+3. Set environment variables
+4. Deploy automatically from main branch
+
+### Environment Variables
+
+For production deployment, set:
+
+```
+CLOUDFLARE_API_TOKEN=your_token_here
+```
+
+## 📊 Project Statistics
+
+- **Backend**: Python FastAPI + AsyncIO
+- **Frontend**: Leaflet.js Interactive Map
+- **Countries Supported**: 60+
+- **Real-time Updates**: Every minute
+- **Response Time**: < 100ms
+
+## 🐛 Issues & Bug Reports
+
+Found a bug? Please open an issue on GitHub with:
+- Clear description of the problem
+- Steps to reproduce
+- Expected vs actual behavior
+- Screenshots (if applicable)
+
+## 💡 Contributing Ideas
+
+Great ideas for improvements:
+- Add attack statistics dashboard
+- Implement WebSocket for real-time updates
+- Add filtering by country or attack type
+- Create backend admin panel
+- Support for additional data sources
+
+## �📄 License
 
 This project is provided as-is for educational and visualization purposes.
